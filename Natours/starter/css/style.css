@@ -10,5 +10,27 @@ Dark green: #28b485
 * {
     margin:0;
     padding:0;
-    box-sizing: border-box; /*
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #777;
+    padding: 3.0rem;
+}
+
+/*********Hero section*********/
+/******************************/
+
+.header{
+    height: 95vh;
+    background-image: linear-gradient(135deg, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top;
+
+    /*clip-path is used to clip part of an image, polygon is used to specify the coordinates of a polygon that we want the image to fill, so we need 4 points if we want a trapezoid*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
