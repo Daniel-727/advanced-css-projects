@@ -60,11 +60,18 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* display: flex;
+    flex-direction: column;
+    gap: 5.4rem;
+    align-items: center; */
+    
+    text-align: center;
 }
 
 .heading-primary{
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 6rem;
 
     /*fix shaking of animation, but honestly I don't think I have shaking*/
     backface-visibility: hidden;
@@ -100,6 +107,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.74rem;
+    
 
     /*animation*/
     animation-name: moveInRight;
@@ -137,4 +145,71 @@ body {
         opacity: 100;
         transform: translate(0);
     }
+}
+
+@keyframes moveInBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(80%);
+    }
+
+    100% {
+        opacity: 100;
+        transform: translate(0);
+    }
+}
+
+.btn:link, .btn:visited{
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover{
+    transform: translateY(-0.3rem);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn:active{
+    transform: translateY(-0.1rem);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+
+
+/*for any before or after pseudo-element to appear on the page, you have to specify the content property and the display property*/
+.btn::after{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn-animated{
+    animation: moveInBottom .5s ease-out .75s;
+    /*animation-fill-mode: backwards makes it so the button isn't visible until the animation ends*/
+    animation-fill-mode: backwards;
 }
