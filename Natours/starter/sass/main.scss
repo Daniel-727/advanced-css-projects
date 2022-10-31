@@ -1,0 +1,225 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+
+*,
+*::after,
+*::before {
+    margin:0;
+    padding:0;
+    box-sizing: inherit; 
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3.0rem;
+    box-sizing: border-box;
+}
+
+/*********Hero section*********/
+/******************************/
+
+.header{
+    height: 95vh;
+    background-image: linear-gradient(135deg, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    /* - Another way to center content responsively - */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    /*clip-path is used to clip part of an image, polygon is used to specify the coordinates of a polygon that we want the image to fill, so we need 4 points if we want a trapezoid*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.header__logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.header__logo{
+    height: 3.5rem;
+}
+
+.header__text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: flex;
+    flex-direction: column;
+    gap: 5.4rem;
+    align-items: center; */
+    
+    text-align: center;
+}
+
+.heading-primary{
+    color: $color-white;
+    text-transform: uppercase;
+    margin-bottom: 6rem;
+
+    /*fix shaking of animation, but honestly I don't think I have shaking*/
+    backface-visibility: hidden;
+}
+
+.heading-primary--main{
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    /*animation*/
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+
+
+    /* - Other animation options - */
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+
+    Animation timing function basically let's us determine how fast we want the animation to be at diffrent times. The ease-in option starts the animation slow, but speeds up over time. The ease-out starts fast and slows down, etc. 
+
+    animation-timing-function: ease-in;
+
+    */
+}
+
+.heading-primary--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    
+
+    /*animation*/
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+
+    80%{
+        transform: translateX(2.5%);
+    }
+
+    100% {
+        opacity: 100;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(20%);
+    }
+
+    80%{
+        transform: translateX(-2.5%);
+    }
+
+    100% {
+        opacity: 100;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(80%);
+    }
+
+    100% {
+        opacity: 100;
+        transform: translate(0);
+    }
+}
+
+.btn:link, .btn:visited{
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover{
+    transform: translateY(-0.3rem);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn:active{
+    transform: translateY(-0.1rem);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.btn--white{
+    background-color: $color-white;
+    color: #777;
+}
+
+
+/*for any before or after pseudo-element to appear on the page, you have to specify the content property and the display property*/
+.btn::after{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn--white::after{
+    background-color: $color-white;
+}
+
+.btn--animated{
+    animation: moveInBottom .5s ease-out .75s;
+    /*animation-fill-mode: backwards makes it so the button isn't visible until the animation ends*/
+    animation-fill-mode: backwards;
+}
