@@ -1,0 +1,38 @@
+.header{
+    height: 95vh;
+    background-image: linear-gradient(135deg, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    /* - Another way to center content responsively - */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    /*clip-path is used to clip part of an image, polygon is used to specify the coordinates of a polygon that we want the image to fill, so we need 4 points if we want a trapezoid*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+
+    &__logo-box { /*& inside of a selector copies the selector so the & here stands for .header and we are nesting the header__logo-box here*/
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* display: flex;
+        flex-direction: column;
+        gap: 5.4rem;
+        align-items: center; */
+        
+        text-align: center;
+    }
+}
