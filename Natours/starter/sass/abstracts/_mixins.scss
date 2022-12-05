@@ -1,0 +1,9 @@
+//mixins are reusable pieces of code which can be used wherever
+
+@mixin clearfix {//this clearfix mixin will append an after pseudo-element which clears the floats using the clear property. Basically this fixes the problem where our rows have no height due to the child-elements being floated. This gives height back to the rows.
+    &::after{
+        content: ""; //content is required or the pseudo-element will not appear on the page, but we give it no content because we dont want to see it on the page
+        display: table;
+        clear: both; //clears the floats. Clearing means to move the content below a float. If you have float left, and you use clear left, the content will start under the left float, vice versa for a right float and clear right. clear both will have the content clear under both floats, whichever one is the lowest will be where the content starts.
+    }
+}
