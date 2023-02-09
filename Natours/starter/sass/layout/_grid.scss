@@ -11,7 +11,6 @@
 
     //the code below selects all our elements that has a class which starts with "col-" so we can select all the columns without adding a new "col" class to every different column type. ^=: something that starts with, *=: something that contains, $=: something that ends with
     [class^="col-"] {
-        background-color: orangered;
         float: left; //if you have multiple elements being floated, in this case multiple columns, float left will have the elements floated in order starting from the left of the parent so column [1 2 3 4]. float right will have the elements floated in order starting from the right of the parent so [4 3 2 1].
 
         &:not(:last-child) {
